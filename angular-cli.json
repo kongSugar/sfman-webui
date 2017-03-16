@@ -20,9 +20,13 @@
       "prefix": "app",
       "styles": [
         "styles/vendor.scss",
-	"styles/main.scss"
+        "styles/main.scss",
+        "../node_modules/primeng/resources/primeng.min.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

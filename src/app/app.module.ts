@@ -1,26 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule, JsonpModule} from '@angular/http';
+
+import {DialogModule, DataTableModule} from 'primeng/primeng';
+import {InputTextModule, ButtonModule} from 'primeng/primeng';
+import {EditorModule, SharedModule} from 'primeng/primeng';
+import {PanelModule, DropdownModule} from 'primeng/primeng';
 
 import {AppRoutesModule} from "./app.routes";
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AccountComponent } from './account/account.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
+import {AccountComponent} from './account/account.component';
+import {ExplorerComponent} from './explorer/explorer.component';
+import {CalendarComponent} from './calendar/calendar.component';
+import {LagerComponent} from './lager/lager.component';
+import {ItemsComponent} from './explorer/items/items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AccountComponent
+    AccountComponent,
+    ExplorerComponent,
+    CalendarComponent,
+    LagerComponent,
+    ItemsComponent
   ],
   imports: [
+    DialogModule, PanelModule, DropdownModule, DataTableModule,
+    InputTextModule,
+    ButtonModule,
+    EditorModule,
+    SharedModule,
     AppRoutesModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule, JsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
