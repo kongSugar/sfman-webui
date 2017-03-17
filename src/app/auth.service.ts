@@ -15,8 +15,16 @@ export class Auth {
   constructor(private router: Router) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-    });
+      this.lock.getUserInfo(authResult.accessToken, function (error, profile) {
+        if (error) {
+          // Handle error
+          return;
+        }
+        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('profile', JSON.stringify(profile));
+
+      });
+    })
   }
 
   public login() {
