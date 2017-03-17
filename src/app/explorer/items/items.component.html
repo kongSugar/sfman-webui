@@ -1,14 +1,15 @@
 <p-dataTable [value]="items" sortMode="single" reorderableColumns="true" [globalFilter]="gb" scrollable="true"
              [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50,100]"
              [(selection)]="selectedItems" columnResizeMode="expand">
-  <p-header [style]="{'width': '100%'}">
+  <!--p-header [style]="{'width': '100%'}">
     <div class="ui-helper-clearfix">
       Big Items Table
     </div>
-  </p-header>
-  <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+  </p-header-->
 
-  <p-column field="id" header="ID" [sortable]="true" [style]="{'width': '5%'}"></p-column>
+  <p-column [style]="{'width':'40px','align':'centered'}" selectionMode="multiple"></p-column>
+
+  <p-column field="id" header="ID" [sortable]="true" [style]="{'width': '40px'}"></p-column>
   <p-column field="name" header="Name" [sortable]="true" [style]="{'width': '10%'}"></p-column>
   <p-column field="department" header="Department" [sortable]="true" [style]="{'width': '10%'}"></p-column>
   <p-column field="description" header="Description" [sortable]="true" [style]="{'width': '15%'}"></p-column>
@@ -18,12 +19,5 @@
   <p-column field="rent" header="Rent" [sortable]="true" [style]="{'width': '5%'}"></p-column>
   <p-column field="serialnumber" header="Serialnumber" [sortable]="true" [style]="{'width': '10%'}"></p-column>
   <p-column field="weight" header="Weight" [sortable]="true" [style]="{'width': '5%'}"></p-column>
-
-  <template let-data="rowData" pTemplate="body">
-    <div class="colordiv">
-      <div class="colorbox" [title]="'#' + data['Col3']" [ngStyle]="{'background-color': '#' + data['Col3']}">
-      </div>
-    </div>
-  </template>
 
 </p-dataTable>

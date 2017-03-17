@@ -183,3 +183,4 @@ $RECYCLE.BIN/
 *.css.map
 
 Würde yarn.lock löschen
+/src/app/auth.config.ts

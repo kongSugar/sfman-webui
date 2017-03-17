@@ -6,22 +6,28 @@
   </button>
   <a class="navbar-brand" href="#">{{title}}</a>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+  <!--TODO bootstrap bug? collapse funktioniert nicht -> dh der menübutton auf mobilgeräten-->
+  <!--div class="collapse navbar-collapse" id="navbarTogglerDemo02"-->
+  <div>
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="nav-item" [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/home']">Home <span
         class="sr-only">(current)</span></a></li>
       <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/account']">Account</a></li>
       <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/test']">Test/LagerCom</a></li>
       <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/explorer']">Inventar</a></li>
+      <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/calendar']">Calendar</a></li>
 
-      <li class="nav-item">
+      <!--li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      </li-->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!--form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form-->
+    <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+    <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
+
   </div>
 </nav>
 
