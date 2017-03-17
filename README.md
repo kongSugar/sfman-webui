@@ -1,3 +1,18 @@
+# Prerequisites
+Install nvm
+`nvm install 10.0.x`
+`nvm use 10.0.x`
+
+Install webstorm
+`over umake`
+`umake ide webstorm`
+
+`git clone this-repo-url`
+
+`npm install`
+`npm i --save angular-cli`
+`ng serve`
+
 # Webproject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2.
