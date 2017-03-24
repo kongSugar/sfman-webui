@@ -1,5 +1,5 @@
 <p-dataTable [value]="items" sortMode="single" reorderableColumns="true" [globalFilter]="gb" scrollable="true"
-             [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50,100]"
+             [rows]="50" [paginator]="true" [rowsPerPageOptions]="[50,100,1000]"
              selectionMode="single"
              [(selection)]="selectedItems" (onRowSelect)="onRowSelect($event)" columnResizeMode="expand">
   <!--p-header [style]="{'width': '100%'}">
@@ -28,15 +28,48 @@
 </p-dataTable>
 
 
-<p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+<p-dialog header="Car Details" [width]="400" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+          [modal]="true">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="item">
     <div class="ui-grid-row">
-      <div class="ui-grid-col-4"><label for="_id">ID</label></div>
-      <div class="ui-grid-col-8"><input pInputText id="_id" [(ngModel)]="item._id"/></div>
+      <div class="ui-grid-col-4"><label>ID</label></div>
+      <div class="ui-grid-col-8"><label>{{item._id}}</label></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="manufacturer">Hersteller</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="manufacturer" [(ngModel)]="item.manufacturer"/></div>
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="name">Name</label></div>
       <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="item.name"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="description">Description</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="description" [(ngModel)]="item.description"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="department">Department</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="department" [(ngModel)]="item.department"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="height_unit">Höhe</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="height_unit" [(ngModel)]="item.height_unit"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="weight">Gewicht</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="weight" [(ngModel)]="item.weight"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="serialnumber">SN</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="serialnumber" [(ngModel)]="item.serialnumber"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="gross_price">GrossPrice</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="gross_price" [(ngModel)]="item.gross_price"/></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="rent">Rent</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="rent" [(ngModel)]="item.rent"/></div>
     </div>
   </div>
   <p-footer>

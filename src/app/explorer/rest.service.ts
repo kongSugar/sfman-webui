@@ -14,11 +14,37 @@ export class RestService {
   constructor(private authHttp: AuthHttp) {
   }
 
-  baseURL = "http://localhost:4000/items";
+  baseURL = "http://localhost:4000/";
+
   getItems(): Observable<Item[]> {
-    let output$ = this.authHttp.get(this.baseURL)
+    let output$ = this.authHttp.get(this.baseURL + "items")
       .map(res => res.json())
       .catch(this.handleError);
+    return output$;
+  }
+
+  createItem(item: Item): Observable<Item> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let output$ = this.authHttp.post(this.baseURL + "items", item, headers)
+      .map(res => res.json())
+      .catch(this.handleError)
+    return output$;
+  }
+
+  updateItem(item: Item): Observable<Item> {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let output$ = this.authHttp.put(this.baseURL + "items/" + item._id, item, headers)
+      .map(res => res.json())
+      .catch(this.handleError)
+    return output$;
+  }
+
+  deleteItem(item: Item): Observable<Item> {
+    let output$ = this.authHttp.delete(this.baseURL + "items/" + item._id)
+      .map(res => res.json())
+      .catch(this.handleError)
     return output$;
   }
 

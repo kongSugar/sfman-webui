@@ -29,9 +29,33 @@ export class ItemsComponent implements OnInit {
   }
 
   delete() {
+    this.restService.deleteItem(this.item).subscribe(
+      () => {
+        this.getItems();
+        this.item = null;
+        this.displayDialog = false;
+      },
+      error => this.errorMessage = <any>error
+    );
+
   }
 
   save() {
+    if (this.newItem)
+      this.restService.createItem(this.item).subscribe(() => {
+          this.getItems();
+          this.item = null;
+          this.displayDialog = false;
+        },
+        error => this.errorMessage = <any>error);
+    else
+      this.restService.updateItem(this.item).subscribe(() => {
+          this.getItems();
+          this.item = null;
+          this.displayDialog = false;
+        },
+        error => this.errorMessage = <any>error);
+
   }
 
   onRowSelect(event) {
