@@ -1,9 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule, JsonpModule} from '@angular/http';
-import {AUTH_PROVIDERS}      from 'angular2-jwt';
+import {HttpModule, Http, RequestOptions, JsonpModule} from '@angular/http';
+import {provideAuth, AuthHttp, AuthConfig}      from 'angular2-jwt';
 import {Auth} from "./auth.service";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 import {DialogModule, DataTableModule} from 'primeng/primeng';
@@ -22,6 +23,10 @@ import {ItemsComponent} from './explorer/items/items.component';
 import {AuthGuard} from "./auth.guard";
 import {LoginComponent} from './login/login.component';
 
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({}), http, options);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,11 +46,18 @@ import {LoginComponent} from './login/login.component';
     SharedModule,
     AppRoutesModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule, JsonpModule
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    }
+
   ],
   bootstrap: [AppComponent]
 })

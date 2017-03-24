@@ -2,7 +2,7 @@ import {Injectable} from  "@angular/core";
 
 
 export interface Item {
-  id: number;
+  _id: number;
   name: string;
   department: string;
   description: string;

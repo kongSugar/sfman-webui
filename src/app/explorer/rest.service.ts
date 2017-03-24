@@ -3,17 +3,20 @@ import {Http, Response}          from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import {AuthHttp} from 'angular2-jwt';
+
 
 import {Item} from "./models/Item";
 
 @Injectable()
 export class RestService {
 
-  constructor(private http: Http) {
+  constructor(private authHttp: AuthHttp) {
   }
 
+  baseURL = "http://localhost:4000/items";
   getItems(): Observable<Item[]> {
-    let output$ = this.http.get('assets/MOCKAROO.json')
+    let output$ = this.authHttp.get(this.baseURL)
       .map(res => res.json())
       .catch(this.handleError);
     return output$;
