@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest.service'
-import {SelectItem} from 'primeng/primeng';
 import {Item} from "../models/Item";
 
 @Component({
@@ -64,6 +63,12 @@ export class ItemsComponent implements OnInit {
     this.displayDialog = true;
   }
 
+  showDialogToEdit(c: Item) {
+    this.newItem = false;
+    this.item = this.cloneItem(c);
+    this.displayDialog = true;
+  }
+
   cloneItem(c: Item): Item {
     let item = new PrimeItem();
     for (let prop in c) {
@@ -93,7 +98,6 @@ export class ItemsComponent implements OnInit {
   ngOnInit() {
     this.getItems();
     this.message = JSON.stringify(this.items);
-    console.log(this.items);
   }
 
 }

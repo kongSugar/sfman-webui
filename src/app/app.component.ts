@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Auth} from "./auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,15 @@ import {Auth} from "./auth.service";
   styleUrls: ['./app.component.scss'],
   providers: [Auth]
 })
-export class AppComponent {
-  constructor(private auth: Auth) {
+export class AppComponent implements OnInit {
+
+
+  ngOnInit() {
+
+  }
+
+  constructor(private auth: Auth, private router: Router) {
+    auth.authenticated()
   }
 
   title = 'Show Factory';

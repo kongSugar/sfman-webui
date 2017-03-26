@@ -7,14 +7,13 @@ import {Auth} from "./auth.service";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
-import {DialogModule, DataTableModule} from 'primeng/primeng';
+import {DialogModule, DataTableModule, InputMaskModule} from 'primeng/primeng';
 import {InputTextModule, ButtonModule} from 'primeng/primeng';
 import {EditorModule, SharedModule} from 'primeng/primeng';
 import {PanelModule, DropdownModule} from 'primeng/primeng';
 
 import {AppRoutesModule} from "./app.routes";
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
 import {AccountComponent} from './account/account.component';
 import {ExplorerComponent} from './explorer/explorer.component';
 import {CalendarComponent} from './calendar/calendar.component';
@@ -30,7 +29,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AccountComponent,
     ExplorerComponent,
     CalendarComponent,
@@ -39,7 +37,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LoginComponent
   ],
   imports: [
-    DialogModule, PanelModule, DropdownModule, DataTableModule,
+    DialogModule, PanelModule, DropdownModule, DataTableModule, InputMaskModule,
     InputTextModule,
     ButtonModule,
     EditorModule,

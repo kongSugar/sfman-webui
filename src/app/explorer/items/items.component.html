@@ -1,34 +1,82 @@
-<p-dataTable [value]="items" sortMode="single" reorderableColumns="true" [globalFilter]="gb" scrollable="true"
+<div class="ui-helper-clearfix" style="width:100%">
+  <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+</div><br>
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+  <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+  <input #gb type="text" pInputText size="50" placeholder="Filter">
+</div>
+<p-dataTable [value]="items" sortMode="single"
              [rows]="50" [paginator]="true" [rowsPerPageOptions]="[50,100,1000]"
-             selectionMode="single"
-             [(selection)]="selectedItems" (onRowSelect)="onRowSelect($event)" columnResizeMode="expand">
-  <!--p-header [style]="{'width': '100%'}">
-    <div class="ui-helper-clearfix">
-      Big Items Table
-    </div>
-  </p-header-->
+             expandableRows="true" [globalFilter]="gb"
+>
 
-  <p-column [style]="{'width':'40px','align':'centered'}" selectionMode="multiple"></p-column>
+  <p-column [style]="{'align':'centered', 'width':'40px'}" selectionMode="multiple"></p-column>
+  <p-column field="manufacturer" header="Hersteller" [sortable]="true"></p-column>
+  <p-column field="name" header="Produkt" [sortable]="true"></p-column>
+  <p-column field="department" header="Lager" [sortable]="true"></p-column>
+  <p-column field="gross_price" header="Preis" [sortable]="true"></p-column>
+  <p-column field="rent" header="Miete" [sortable]="true"></p-column>
+  <p-column [style]="{'align':'centered', 'width':'40px'}" expander="true" styleClass="col-icon"></p-column>
 
-  <p-column field="_id" header="ID" [sortable]="true" [style]="{'width': '15%'}"></p-column>
-  <p-column field="name" header="Name" [sortable]="true" [style]="{'width': '10%'}"></p-column>
-  <p-column field="department" header="Department" [sortable]="true" [style]="{'width': '10%'}"></p-column>
-  <p-column field="description" header="Description" [sortable]="true" [style]="{'width': '15%'}"></p-column>
-  <p-column field="gross_price" header="Gross_price" [sortable]="true" [style]="{'width': '5%'}"></p-column>
-  <p-column field="height_unit" header="Height_unit" [sortable]="true" [style]="{'width': '5%'}"></p-column>
-  <p-column field="manufacturer" header="Manufacturer" [sortable]="true" [style]="{'width': '10%'}"></p-column>
-  <p-column field="rent" header="Rent" [sortable]="true" [style]="{'width': '5%'}"></p-column>
-  <p-column field="serialnumber" header="Serialnumber" [sortable]="true" [style]="{'width': '10%'}"></p-column>
-  <p-column field="weight" header="Weight" [sortable]="true" [style]="{'width': '5%'}"></p-column>
-  <p-footer>
-    <div class="ui-helper-clearfix" style="width:100%">
-      <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+  <ng-template let-item pTemplate="rowexpansion">
+    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
+      <div class="ui-grid-row">
+
+        <div class="ui-grid-col-12">
+          <div class="ui-grid ui-grid-responsive ui-grid-pad">
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">ID</div>
+              <div class="ui-grid-col-8">{{item._id}}</div>
+              <div class="ui-grid-col-2">
+                <button type="button" pButton icon="fa-edit" style="float:left" (click)="showDialogToEdit(item)"
+                        label="Edit"></button>
+              </div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Hersteller</div>
+              <div class="ui-grid-col-10">{{item.manufacturer}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Name</div>
+              <div class="ui-grid-col-10">{{item.name}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Beschreibung</div>
+              <div class="ui-grid-col-10">{{item.description}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Department</div>
+              <div class="ui-grid-col-10">{{item.department}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Höhe</div>
+              <div class="ui-grid-col-10">{{item.height_unit}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Gewicht</div>
+              <div class="ui-grid-col-10">{{item.weight}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Seriennummer</div>
+              <div class="ui-grid-col-10">{{item.serialnumber}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Gross</div>
+              <div class="ui-grid-col-10">{{item.gross_price}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2 label">Rent</div>
+              <div class="ui-grid-col-10">{{item.rent}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </p-footer>
+  </ng-template>
 </p-dataTable>
 
 
-<p-dialog header="Car Details" [width]="400" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+<p-dialog header="Produkt Details" [width]="400" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
           [modal]="true">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="item">
     <div class="ui-grid-row">

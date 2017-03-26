@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from "./home/home.component";
 import {AccountComponent} from "./account/account.component";
 import {LagerComponent} from "./lager/lager.component";
 import {ExplorerComponent} from "./explorer/explorer.component";
@@ -13,10 +12,6 @@ export const ROUTE_CONFIG: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'login',

@@ -1,51 +1,32 @@
-<nav class="navbar navbar-toggleable-md navbar-light" style="background-color: mediumspringgreen;max-height: 40px;">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">{{title}}</a>
+<nav>
 
-  <!--TODO bootstrap bug? collapse funktioniert nicht -> dh der menübutton auf mobilgeräten-->
-  <!--div class="collapse navbar-collapse" id="navbarTogglerDemo02"-->
-  <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-    <li class="nav-item" [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/home']">Home <span
-      class="sr-only">(current)</span></a></li>
+  <div class="nav-wrapper">
 
-    <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/test']" *ngIf="auth.authenticated()">Test/LagerCom</a>
-    </li>
-    <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/explorer']" *ngIf="auth.authenticated()">Inventar</a>
-    </li>
-    <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/calendar']" *ngIf="auth.authenticated()">Calendar</a>
-    </li>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/login']" class="">{{title}}</a></li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/test']" *ngIf="auth.authenticated()">Test/LagerCom</a>
+      </li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/explorer']" *ngIf="auth.authenticated()">Inventar</a>
+      </li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/calendar']" *ngIf="auth.authenticated()">Calendar</a>
+      </li>
+    </ul>
 
-    <!--li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li-->
-  </ul>
-  <!--form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form-->
-  <div class="pull-right">
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+    <ul id="nav-mobile2" class="right hide-on-med-and-down">
       <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/account']" *ngIf="auth.authenticated()">Profile</a>
       </li>
 
-      <div style="  display: flex;
-  align-items: center;">
-        <button class="btn btn-success btn-margin btn-sm" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In
-        </button>
-        <button class="btn btn-danger btn-margin btn-sm" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out
-        </button>
+      <div class="valign-wrapper" style="  display: flex;">
+        <li><a style="background-color: green" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In
+        </a>
+          <a style="background-color: red" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out
+          </a></li>
       </div>
-
     </ul>
-
-
   </div>
 </nav>
 
+<!--div *ngIf="!auth.authenticated()"></div-->
 
 <div class="container">
   <router-outlet></router-outlet>
