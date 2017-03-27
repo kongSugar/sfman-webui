@@ -24,12 +24,12 @@
   <p-column field="Col1" header="Column 1" [sortable]="true" [style]="{'width': '200px'}"></p-column>
   <p-column field="Col2" header="Column 2" [sortable]="true" [style]="{'width': '200px'}"></p-column>
   <p-column field="Col3" header="Column 3" [sortable]="true" [style]="{'width': '200px'}">
-    <template let-data="rowData" pTemplate="body">
+    <ng-template let-data="rowData" pTemplate="body">
       <div class="colordiv">
         <div class="colorbox" [title]="'#' + data['Col3']" [ngStyle]="{'background-color': '#' + data['Col3']}">
         </div>
       </div>
-    </template>
+    </ng-template>
   </p-column>
 
 </p-dataTable>

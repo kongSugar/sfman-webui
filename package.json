@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^4.0.0-rc.3",
     "@angular/platform-browser-dynamic": "^4.0.0-rc.3",
     "@angular/router": "^4.0.0-rc.3",
+    "angular-material-data-table": "^0.10.10",
     "angular2-jwt": "^0.1.28",
     "auth0-lock": "^10.13.0",
     "bootstrap": "4.0.0-alpha.6",
