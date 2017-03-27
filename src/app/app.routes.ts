@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 import {AccountComponent} from "./account/account.component";
-import {LagerComponent} from "./lager/lager.component";
 import {ExplorerComponent} from "./explorer/explorer.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {AuthGuard} from "./auth.guard";
@@ -25,10 +24,6 @@ export const ROUTE_CONFIG: Routes = [
     path: 'explorer',
     component: ExplorerComponent, canActivate: [AuthGuard]
 
-  },
-  {
-    path: 'test',
-    component: LagerComponent, canActivate: [AuthGuard]
   },
   {
     path: 'calendar',

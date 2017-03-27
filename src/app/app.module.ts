@@ -17,7 +17,6 @@ import {AppComponent} from './app.component';
 import {AccountComponent} from './account/account.component';
 import {ExplorerComponent} from './explorer/explorer.component';
 import {CalendarComponent} from './calendar/calendar.component';
-import {LagerComponent} from './lager/lager.component';
 import {ItemsComponent} from './explorer/items/items.component';
 import {AuthGuard} from "./auth.guard";
 import {LoginComponent} from './login/login.component';
@@ -32,7 +31,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AccountComponent,
     ExplorerComponent,
     CalendarComponent,
-    LagerComponent,
     ItemsComponent,
     LoginComponent
   ],

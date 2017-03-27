@@ -16,8 +16,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav">
-        <li [routerLinkActive]="['active']"><a [routerLink]="['/test']" *ngIf="auth.authenticated()">Test/LagerCom</a>
-        </li>
         <li [routerLinkActive]="['active']"><a [routerLink]="['/explorer']" *ngIf="auth.authenticated()">Inventar</a>
         </li>
         <li [routerLinkActive]="['active']"><a [routerLink]="['/calendar']" *ngIf="auth.authenticated()">Calendar</a>
@@ -28,12 +26,13 @@
         <li [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/account']"
                                                *ngIf="auth.authenticated()">Profile</a>
         </li>
-
-        <div class="valign-wrapper" style="  display: flex;">
-          <li><a style="background-color: green" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In
-          </a>
-            <a style="background-color: red" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out
-            </a></li>
+        <div style="  display: flex;
+  align-items: center;">
+          <button type="button" class="btn btn-success" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In
+          </button>
+          <button type="button" class="btn btn-danger btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">
+            Log Out
+          </button>
         </div>
       </ul>
     </div>
