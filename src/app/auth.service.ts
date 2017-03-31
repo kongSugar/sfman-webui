@@ -1,6 +1,6 @@
 import {Injectable}      from '@angular/core';
 import {tokenNotExpired} from 'angular2-jwt';
-import {Router} from '@angular/router';
+import {Router, NavigationStart} from '@angular/router';
 import {myConfig}        from './auth.config';
 
 import 'rxjs/add/operator/filter';
@@ -12,20 +12,23 @@ export class Auth {
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
 
+
   constructor(private router: Router) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      this.lock.getUserInfo(authResult.accessToken, function (error, profile) {
-        if (error) {
-          // Handle error
-          return;
-        }
-        localStorage.setItem('id_token', authResult.idToken);
-        localStorage.setItem('profile', JSON.stringify(profile));
+      localStorage.setItem('id_token', authResult.idToken);
 
-      });
+      this.lock.getUserInfo(authResult.idToken, function (error, profile) {
+        if (error) {
+          console.log(error);
+        }
+        localStorage.setItem('profile', JSON.stringify(profile));
+      })
     })
+
+
   }
+
 
   public login() {
     // Call the show method to display the widget.
@@ -42,6 +45,6 @@ export class Auth {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 }

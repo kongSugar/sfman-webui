@@ -32,6 +32,7 @@ Alpha 0.1-a release und auf dem Server aufsetzen
 ### Mögliche Änderungen am Schema
 
 ```
+  barcode: String,
 	category: String,
 	tags: [pa, ...]
 	quantity: Number

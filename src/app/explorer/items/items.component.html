@@ -1,44 +1,9 @@
-<h2>Eigenproduktion</h2>
-
-<!-- table class="responsive-table bordered highlight">
-  <thead>
-  <tr>
-    <th>Hersteller</th>
-    <th>Produkt</th>
-    <th>Lager</th>
-    <th>Preis</th>
-    <th>Miete</th>
-  </tr>
-  </thead>
-
-
-  <ul *ngFor="let item of items" class="collapsible" data-collapsible="expandable">
-    <li>
-      <div class="collapsible-header">
-        <tbody>
-        <tr>
-          <td>{{item.manufacturer}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.department}}</td>
-          <td>{{item.gross_price}}</td>
-          <td>{{item.rent}}</td>
-          <td>exp</td>
-        </tr>
-</tbody>
-      </div>
-      <div class="collapsible-body"><span>Lorem ipsum est</span></div>
-    </li>
-
-  </ul>
-</table  -->
-
-<h2>PrimeNG </h2>
 <div class="ui-helper-clearfix" style="width:100%">
   <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
 </div><br>
 <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
   <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-  <input #gb type="text" pInputText size="50" placeholder="Filter">
+  <input #gb type="text" pInputText size="30" placeholder="Filter">
 </div>
 <p-dataTable [value]="items" sortMode="single"
              [rows]="50" [paginator]="true" [rowsPerPageOptions]="[50,100,1000]"

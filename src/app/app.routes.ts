@@ -1,20 +1,19 @@
 import { Routes, RouterModule } from '@angular/router';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AccountComponent} from "./account/account.component";
 import {ExplorerComponent} from "./explorer/explorer.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {AuthGuard} from "./auth.guard";
 import {LoginComponent} from "./login/login.component";
+import {AuthenticationCallbackActivateGuard} from "./AuthenticationCallbackActivate.guard";
 
 
 export const ROUTE_CONFIG: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AuthenticationCallbackActivateGuard]
+    , pathMatch: "full"
   },
   {
     path: 'account',
@@ -31,7 +30,7 @@ export const ROUTE_CONFIG: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: ''
   }
 ];
 

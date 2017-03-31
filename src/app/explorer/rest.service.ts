@@ -14,7 +14,7 @@ export class RestService {
   constructor(private authHttp: AuthHttp) {
   }
 
-  baseURL = "http://localhost:4000/";
+  baseURL = "http://showfactory.ddns.net:8097/";
 
   getItems(): Observable<Item[]> {
     let output$ = this.authHttp.get(this.baseURL + "items")
